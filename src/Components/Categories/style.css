@@ -1,0 +1,33 @@
+.list {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 20px;
+}
+
+.list > p {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+
+.active {
+  border-bottom: 5px solid var(--vintage);
+}
+
+@media only screen and (max-width: 800px) {
+  .list {
+    width: 100%;
+    overflow-x: scroll;
+    font-size: 12px;
+    padding: 0%;
+    margin: 0%;
+    gap: 0;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+}

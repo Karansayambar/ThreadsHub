@@ -1,0 +1,99 @@
+.navbar-container {
+  width: 100vw;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.logo-text {
+  font-family: "Playwrite DE Grund", cursive;
+  font-weight: 700;
+}
+
+.logo-img {
+  padding: 0%;
+  margin: 0%;
+  width: 50px;
+  height: 50px;
+  color: var(--white);
+  background: var(--vintage);
+  border-radius: 50%;
+}
+
+.location {
+  padding: 0%;
+  margin: 0%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.search-logo {
+  font-size: 18px;
+  background-color: var(--vintage);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+input {
+  width: 20rem;
+  padding: 0.5rem;
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 1px solid var(--white);
+  color: var(--white);
+}
+
+input:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar-container {
+    width: 100vw;
+    /* padding: 1rem; */
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+    margin: 0;
+  }
+  /* .logo-text {
+    display: none;
+  }
+
+  .location {
+    display: none;
+  } */
+
+  .location p {
+    font-size: 10px;
+  }
+
+  .icon {
+    font-size: 15px !important;
+  }
+}
