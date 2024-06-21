@@ -93,7 +93,16 @@ useEffect(() => {
     return (
         <>
             <div className="search-container">
-                {!searchToggle && <h1 className="head">Top Headlines in {category}</h1>}
+                {!searchToggle && 
+                 <marquee className="marquee">
+                    <div className="marquee-content">
+                        <p>Nifty50 23,501.10</p>
+                        <p style={{color:"red"}}>-65.90</p>
+                        <p>Sunsex 77,209,90</p>
+                        <p style={{color:"green"}}>+1.00</p>
+                    </div>
+                    
+                </marquee>}
                 {isMobile && (
                     <div className='search' onClick={() => setSearchToggle(true)}>
                         {searchToggle ? <Search /> : <><p><IoSearchSharp className='search-logo' /></p></>}
@@ -114,7 +123,7 @@ useEffect(() => {
                 ) : articles && articles.length > 0 ? (
                     <>
                         {!isMobile ? (
-                            articles.slice(page * 6 - 6, page * 6).map((article, index) => (
+                            articles.slice(page * 9 - 9, page * 9).map((article, index) => (
                                 <div className="article" key={index}>
                                     <Link to={article.url} className="link">
                                     <div className="link">
@@ -126,14 +135,16 @@ useEffect(() => {
                                 </div>
                             ))
                         ) : (
-                            articles.slice(page * 7 - 7, page * 7).map((article, index) => (
+                            articles.slice(page * 9 - 9, page * 9).map((article, index) => (
                                 <div className="article" key={index}>
                                     <div className="container">
                                         <img className="img" src={article.image} alt={article.title} />
                                         <div className="mini-container">
+                                            <Link to={article.url} className="link">
                                             <h3 className="title">{article.title.slice(0, 50)}...</h3>
-                                            {/* <p className="source">{article.source.name}</p> */}
+                                            {/* <p className="source">Auther: {article.author}</p> */}
                                             <p className="publish">{TimeConverter(article.published.slice(0, 10))}</p>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

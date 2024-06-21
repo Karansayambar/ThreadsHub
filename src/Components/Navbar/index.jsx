@@ -8,6 +8,8 @@ import { changeIcons } from '../../Functions/useIcons';
 import useCheckMobileScreen from '../../Functions/useCheckMobileScreen';
 import Search from '../Search';
 import { CategoryContext } from '../../Context/CategoryContext';
+import { FcLike } from "react-icons/fc";
+
 
 
 
@@ -89,6 +91,7 @@ const Navbar = () => {
                         }
                     </div>
                 )}
+                <div className='badge-container'><FcLike style={{ fontSize: '30px' }}/><span class="badge">1</span></div>
             </div>
         </div>
     )

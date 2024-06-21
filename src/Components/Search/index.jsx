@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CategoryContext } from '../../Context/CategoryContext';
+import './style.css';
 
 const Search = () => {
     const { search, setSearch, setCategory } = useContext(CategoryContext);
@@ -21,7 +22,7 @@ const Search = () => {
     };
 
     return (
-        <div>
+        <div className='search-container'>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

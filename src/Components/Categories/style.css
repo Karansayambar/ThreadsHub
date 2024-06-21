@@ -5,6 +5,8 @@
   justify-content: center;
   gap: 2rem;
   font-size: 20px;
+  position: fixed !important;
+  top: 90px;
 }
 
 .list > p {
@@ -13,7 +15,6 @@
   font-weight: 500;
   text-transform: capitalize;
 }
-
 
 .active {
   border-bottom: 5px solid var(--vintage);
@@ -29,5 +30,9 @@
     gap: 0;
     margin-left: 0;
     justify-content: flex-start;
+    position: fixed !important;
+    top: 70px;
+    margin-bottom: 0.5rem !important;
+    z-index: 10;
   }
 }

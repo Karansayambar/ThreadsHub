@@ -4,6 +4,7 @@
   width: 100vw;
   padding: 0rem 3rem;
   box-sizing: border-box;
+  margin-top: 0.5rem;
 }
 
 .article {
@@ -78,6 +79,28 @@ input:focus {
   outline: none;
 }
 
+.marquee {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 15px;
+  margin-top: 4rem;
+}
+
+.marquee h3 {
+  margin: 0;
+  padding-right: 10px;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+}
+
+.marquee-content p {
+  margin: 0 10px; /* Adjust spacing as needed */
+}
+
 @media only screen and (max-width: 800px) {
   .article-container {
     width: 100vw;
@@ -89,18 +112,17 @@ input:focus {
   .article {
     padding: 0.4rem 1rem;
     margin: auto;
-    width: 99%;
-    height: 150px;
+    width: 95%;
+    height: 130px;
     margin-bottom: 0.5rem !important;
     border-bottom: none;
-    border-left: 4px solid var(--vintage);
     background-color: #76abae22;
     border-radius: 0.5rem;
   }
 
   .article:hover {
-    border-bottom: none;
     border-left: 5px solid var(--vintage);
+    color: var(--vintage);
   }
 
   .title {
@@ -115,6 +137,7 @@ input:focus {
     background-size: auto;
     width: 100px;
     height: 100px;
+    margin: auto;
   }
 
   .container {
@@ -133,7 +156,7 @@ input:focus {
   }
 
   .head {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .source {
@@ -152,6 +175,7 @@ input:focus {
 
   .search {
     display: flex;
+    margin-top: 2rem;
   }
 
   .search-container {
@@ -159,5 +183,26 @@ input:focus {
     align-items: center;
     justify-content: space-between;
     padding: 0.2rem 1rem;
+    margin-top: 0.8rem;
+  }
+  .marquee {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 15px;
+  }
+
+  .marquee h3 {
+    margin: 0;
+    padding-right: 10px;
+  }
+
+  .marquee-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .marquee-content p {
+    margin: 0 10px; /* Adjust spacing as needed */
   }
 }

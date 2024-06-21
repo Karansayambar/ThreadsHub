@@ -9,19 +9,19 @@
   padding: 0.1rem 0.8rem;
   cursor: pointer;
   font-size: 24px;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .pagination-number {
   cursor: pointer;
-  margin: 0 5px;
-  padding: 0.4rem 0.8rem;
+  margin: 0 1px;
+  padding: 0.4rem 0.5rem;
   border-radius: 100%;
   transition: background-color 0.3s ease;
 }
 
 .pagination-number:hover,
 .pagination-number.active {
-  padding: 0.1rem 0.8rem;
+  padding: 0.1rem 0.6rem;
   background-color: var(--vintage);
 }
