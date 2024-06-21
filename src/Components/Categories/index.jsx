@@ -6,7 +6,7 @@ const Categories = () => {
 
     const {category, setCategory} = useContext(CategoryContext);
     console.log("dtata is ",category);
-    const arr = ["Politics", "Business", "Technology", "Health", "Sports" ,"Entertainment"];
+    const arr = ["finance", "business", "technology", "regional", "health", "sports" ,"entertainment", "ev", "auto"];
 
     const handleItemClick = (item) => {
         setCategory(item);

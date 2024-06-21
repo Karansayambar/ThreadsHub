@@ -21,54 +21,23 @@ const MainPage = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                 // const key = "1436c2c4dbc348e1b92cbc2c5010d5a1";
-//                 // const key = "386d133d7ed649ff9d4074e5b198a729";
-                setIsLoading(true);
-                const key = "589b61a2a62040e6b08d585c3709a08e"; // Replace with your actual API key
-                let url = '';
-
-                if (search) {
-                    url = `https://newsapi.org/v2/everything?q=${search}&apiKey=${key}`;
-                } else if (category) {
-                    url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${key}`;
-                }
-
-                const response = await axios.get(url);
-                setArticles(response.data.articles);
-                setIsLoading(false);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                setIsLoading(false);
-            }
-        };
-        getData();
-    }, [category, search]);
-
-
-// useEffect(() => {
+//     useEffect(() => {
 //         const getData = async () => {
 //             try {
+//                  // const key = "1436c2c4dbc348e1b92cbc2c5010d5a1";
+// //                 // const key = "386d133d7ed649ff9d4074e5b198a729";
 //                 setIsLoading(true);
-//                 const key = "iOw9-O0NNH9cWzAZZDKp8b-ZhvnWOeBGkZgBDz1tmfS_tGAM"; // Your API Key
+//                 const key = "589b61a2a62040e6b08d585c3709a08e"; // Replace with your actual API key
 //                 let url = '';
 
 //                 if (search) {
-//                     // Fetch based on search keyword
-//                     url = `https://api.currentsapi.services/v1/search?keywords=${search}&language=en&apiKey=${key}`;
+//                     url = `https://newsapi.org/v2/everything?q=${search}&apiKey=${key}`;
 //                 } else if (category) {
-//                     // Fetch based on category
-//                     url = `https://api.currentsapi.services/v1/latest-news?category=${category}&language=en&apiKey=${key}`;
-//                 } else {
-//                     // Fetch latest news if no search or category is provided
-//                     url = `https://api.currentsapi.services/v1/latest-news?language=en&apiKey=${key}`;
+//                     url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${key}`;
 //                 }
 
 //                 const response = await axios.get(url);
-//                 setArticles(response.data.news);
-//                 console.log("Your data:", response.data.news);
+//                 setArticles(response.data.articles);
 //                 setIsLoading(false);
 //             } catch (error) {
 //                 console.error("Error fetching data:", error);
@@ -77,6 +46,37 @@ const MainPage = () => {
 //         };
 //         getData();
 //     }, [category, search]);
+
+
+useEffect(() => {
+        const getData = async () => {
+            try {
+                setIsLoading(true);
+                const key = "iOw9-O0NNH9cWzAZZDKp8b-ZhvnWOeBGkZgBDz1tmfS_tGAM"; // Your API Key
+                let url = '';
+
+                if (search) {
+                    // Fetch based on search keyword
+                    url = `https://api.currentsapi.services/v1/search?keywords=${search}&language=en&apiKey=${key}`;
+                } else if (category) {
+                    // Fetch based on category
+                    url = `https://api.currentsapi.services/v1/latest-news?category=${category}&language=en&apiKey=${key}`;
+                } else {
+                    // Fetch latest news if no search or category is provided
+                    url = `https://api.currentsapi.services/v1/latest-news?language=en&apiKey=${key}`;
+                }
+
+                const response = await axios.get(url);
+                setArticles(response.data.news);
+                console.log("Your data:", response.data.news);
+                setIsLoading(false);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setIsLoading(false);
+            }
+        };
+        getData();
+    }, [category, search]);
 
 
 
@@ -119,7 +119,7 @@ const MainPage = () => {
                                     <Link to={article.url} className="link">
                                     <div className="link">
                                         <h3 className="title">{article.title.slice(0, 80)}...</h3>
-                                        <img className="img" src={article.urlToImage} alt={article.title} />
+                                        <img className="img" src={article.image} alt={article.title} />
                                         <p className="description">{article.description ? article.description.slice(0, 100) + "..." : "No description available"}</p>
                                     </div>
                                     </Link>
@@ -129,11 +129,11 @@ const MainPage = () => {
                             articles.slice(page * 7 - 7, page * 7).map((article, index) => (
                                 <div className="article" key={index}>
                                     <div className="container">
-                                        <img className="img" src={article.urlToImage} alt={article.title} />
+                                        <img className="img" src={article.image} alt={article.title} />
                                         <div className="mini-container">
                                             <h3 className="title">{article.title.slice(0, 50)}...</h3>
-                                            <p className="source">{article.source.name}</p>
-                                            <p className="publish">{TimeConverter(article.publishedAt.slice(0, 10))}</p>
+                                            {/* <p className="source">{article.source.name}</p> */}
+                                            <p className="publish">{TimeConverter(article.published.slice(0, 10))}</p>
                                         </div>
                                     </div>
                                 </div>
