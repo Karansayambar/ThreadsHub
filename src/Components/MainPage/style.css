@@ -10,8 +10,8 @@
 .article {
   box-sizing: border-box;
   background-color: #eeedeb;
-  width: 447px;
-  height: 380px;
+  width: 430px;
+  height: 420px;
   padding: 1rem;
   margin: 1rem;
   cursor: pointer;
@@ -28,9 +28,9 @@
   color: var(--vintage);
 }
 
-/* .title:hover {
+.title:hover {
   color: var(--vintage);
-} */
+}
 
 .img {
   margin: auto;
@@ -84,7 +84,7 @@ input:focus {
   align-items: center;
   white-space: nowrap;
   font-size: 15px;
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 .marquee h3 {
@@ -101,6 +101,17 @@ input:focus {
   margin: 0 10px; /* Adjust spacing as needed */
 }
 
+.like-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10px;
+}
+
+.color-red {
+  color: red;
+}
+
 @media only screen and (max-width: 800px) {
   .article-container {
     width: 100vw;
@@ -111,9 +122,9 @@ input:focus {
 
   .article {
     padding: 0.4rem 1rem;
-    margin: auto;
+    margin: auto 0.5rem;
     width: 95%;
-    height: 130px;
+    height: 140px;
     margin-bottom: 0.5rem !important;
     border-bottom: none;
     background-color: #76abae22;
@@ -127,6 +138,7 @@ input:focus {
 
   .title {
     font-size: 15px;
+    padding: 0%;
   }
 
   .title:hover {
@@ -204,5 +216,16 @@ input:focus {
 
   .marquee-content p {
     margin: 0 10px; /* Adjust spacing as needed */
+  }
+
+  .like-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10px;
+  }
+
+  .color-red {
+    color: red;
   }
 }

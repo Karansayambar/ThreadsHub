@@ -14,7 +14,7 @@ import { FcLike } from "react-icons/fc";
 
 
 const Navbar = () => {
-    const {search, setSearch} = useContext(CategoryContext);
+    const {search, setSearch, like} = useContext(CategoryContext);
     const [data, setData] = useState();
     const [searchToggle, setSearchToggle] = useState(false);
     const [location, setLocation] = useState({ latitude: null, longitude: null });
@@ -79,7 +79,8 @@ const Navbar = () => {
                     <img className='logo-img' src={TH_LOGO} />
                     <p className='logo-text'>TRENDS Hub</p>
                 </span>
-                {!isMobile && (
+                <div style={{display: "flex", alignItems : "center", justifyContent : "center", gap : "1.5rem"}}>
+                    {!isMobile && (
                     <div className='search' onClick={() => setSearchToggle(true)}>
                         {searchToggle ? (
                             <Search/>
@@ -91,7 +92,8 @@ const Navbar = () => {
                         }
                     </div>
                 )}
-                <div className='badge-container'><FcLike style={{ fontSize: '30px' }}/><span class="badge">1</span></div>
+                <div className='badge-container'><FcLike style={{ fontSize: '25px' }}/><span class={like > 0 ? "badge" : ""}>{like}</span></div>
+                </div>
             </div>
         </div>
     )

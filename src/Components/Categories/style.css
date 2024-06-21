@@ -7,6 +7,8 @@
   font-size: 20px;
   position: fixed !important;
   top: 90px;
+  background-color: var(--white);
+  z-index: 10;
 }
 
 .list > p {
@@ -17,7 +19,7 @@
 }
 
 .active {
-  border-bottom: 5px solid var(--vintage);
+  border-bottom: 7px solid var(--vintage);
 }
 
 @media only screen and (max-width: 800px) {

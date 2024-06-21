@@ -9,44 +9,20 @@ import DesktopLoader from "../../Functions/useDesktopLoader";
 import Pagination from "../Pagination";
 import { IoSearchSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineLike } from "react-icons/ai";
 import Search from "../Search";
 
 const MainPage = () => {
-    const { category, page, search, setSearch } = useContext(CategoryContext);
+    const { category, page, search, like, setLike } = useContext(CategoryContext);
     const [data, setData] = useState(null);
     const [articles, setArticles] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const isMobile = useCheckMobileScreen();
     const [searchToggle, setSearchToggle] = useState(false);
-    const [error, setError] = useState(null);
+    const [color, setColor] = useState(false);
+    const [likedArticles, setLikedArticles] = useState([]);
+
     const navigate = useNavigate();
-
-//     useEffect(() => {
-//         const getData = async () => {
-//             try {
-//                  // const key = "1436c2c4dbc348e1b92cbc2c5010d5a1";
-// //                 // const key = "386d133d7ed649ff9d4074e5b198a729";
-//                 setIsLoading(true);
-//                 const key = "589b61a2a62040e6b08d585c3709a08e"; // Replace with your actual API key
-//                 let url = '';
-
-//                 if (search) {
-//                     url = `https://newsapi.org/v2/everything?q=${search}&apiKey=${key}`;
-//                 } else if (category) {
-//                     url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${key}`;
-//                 }
-
-//                 const response = await axios.get(url);
-//                 setArticles(response.data.articles);
-//                 setIsLoading(false);
-//             } catch (error) {
-//                 console.error("Error fetching data:", error);
-//                 setIsLoading(false);
-//             }
-//         };
-//         getData();
-//     }, [category, search]);
-
 
 useEffect(() => {
         const getData = async () => {
@@ -78,17 +54,18 @@ useEffect(() => {
         getData();
     }, [category, search]);
 
+    const toggleLike = (id) => {
+        if(likedArticles.includes(id)){
+            // Unlike article
+            setLikedArticles(likedArticles.filter(item => item !== id));
+            setLike(like - 1);
+        }else {
+            // Like article
+            setLikedArticles([...likedArticles, id]);
+            setLike(like + 1);
+        }
+    }
 
-
-    // const handleFetchArticle = async (articleUrl) => {
-    //     try {
-    //         const response = await axios.post('http://localhost:5000/', { articleUrl });
-    //         const { article } = response.data;
-    //         navigate('/article', { state: { articleData: article } });
-    //     } catch (error) {
-    //         console.error('Error fetching article data:', error);
-    //     }
-    // };
 
     return (
         <>
@@ -125,13 +102,17 @@ useEffect(() => {
                         {!isMobile ? (
                             articles.slice(page * 9 - 9, page * 9).map((article, index) => (
                                 <div className="article" key={index}>
-                                    <Link to={article.url} className="link">
+                                    
                                     <div className="link">
-                                        <h3 className="title">{article.title.slice(0, 80)}...</h3>
+                                       <Link to={article.url} className="link"> <h3 className="title">{article.title.slice(0, 80)}...</h3></Link>
                                         <img className="img" src={article.image} alt={article.title} />
                                         <p className="description">{article.description ? article.description.slice(0, 100) + "..." : "No description available"}</p>
+                                        <div className="like-container">
+                                        <p className="publish">{TimeConverter(article.published.slice(0, 10))}</p>
+                                        <p className={likedArticles.includes(article.id) ? "color-red" : ''} onClick={() => toggleLike(article.id)}><AiOutlineLike/></p>
                                     </div>
-                                    </Link>
+                                    </div>
+                                    
                                 </div>
                             ))
                         ) : (
@@ -140,11 +121,12 @@ useEffect(() => {
                                     <div className="container">
                                         <img className="img" src={article.image} alt={article.title} />
                                         <div className="mini-container">
-                                            <Link to={article.url} className="link">
-                                            <h3 className="title">{article.title.slice(0, 50)}...</h3>
+                                            <Link to={article.url} className="link"> <h3 className="title">{article.title.slice(0, 60)}...</h3></Link>
                                             {/* <p className="source">Auther: {article.author}</p> */}
-                                            <p className="publish">{TimeConverter(article.published.slice(0, 10))}</p>
-                                            </Link>
+                                            <div className="like-container">
+                                                <p className="publish">{TimeConverter(article.published.slice(0, 10))}</p>
+                                                <p className={likedArticles.includes(article.id) ? "color-red" : ''} onClick={() => toggleLike(article.id)}><AiOutlineLike/></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
