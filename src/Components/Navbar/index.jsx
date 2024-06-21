@@ -42,15 +42,22 @@ const Navbar = () => {
     useEffect(() => {
         if (location.lat && location.lon) {
             const getData = async () => {
-                const key = '3bd396daa9bc129133500fbad6d37a50'
-                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${key}`
                 try {
-                    const response = await axios.get(url);
-                    setData(response.data)
-                    console.log("your data is", data);
-                } catch (error) {
-                    console.log(error);
+                setIsLoading(true);
+                const api_key = 'your-api-key';
+                const url = `https://api.oikolab.com/weather?lat=${lat}&lon=${lon}&api-key=${api_key}`;
+
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                const data = await response.json();
+                setWeatherData(data);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setIsLoading(false);
+            }
             }
             getData();
         } else {
