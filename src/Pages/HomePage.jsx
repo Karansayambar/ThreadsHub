@@ -8,6 +8,7 @@ const HomePage = () => {
         <Navbar/>
         <Categories/>
         <MainPage/>
+        
     </div>
   )
 }
