@@ -27,7 +27,7 @@ const MainPage = () => {
                  // const key = "1436c2c4dbc348e1b92cbc2c5010d5a1";
 //                 // const key = "386d133d7ed649ff9d4074e5b198a729";
                 setIsLoading(true);
-                const key = "386d133d7ed649ff9d4074e5b198a729"; // Replace with your actual API key
+                const key = "589b61a2a62040e6b08d585c3709a08e"; // Replace with your actual API key
                 let url = '';
 
                 if (search) {
@@ -46,6 +46,39 @@ const MainPage = () => {
         };
         getData();
     }, [category, search]);
+
+
+// useEffect(() => {
+//         const getData = async () => {
+//             try {
+//                 setIsLoading(true);
+//                 const key = "iOw9-O0NNH9cWzAZZDKp8b-ZhvnWOeBGkZgBDz1tmfS_tGAM"; // Your API Key
+//                 let url = '';
+
+//                 if (search) {
+//                     // Fetch based on search keyword
+//                     url = `https://api.currentsapi.services/v1/search?keywords=${search}&language=en&apiKey=${key}`;
+//                 } else if (category) {
+//                     // Fetch based on category
+//                     url = `https://api.currentsapi.services/v1/latest-news?category=${category}&language=en&apiKey=${key}`;
+//                 } else {
+//                     // Fetch latest news if no search or category is provided
+//                     url = `https://api.currentsapi.services/v1/latest-news?language=en&apiKey=${key}`;
+//                 }
+
+//                 const response = await axios.get(url);
+//                 setArticles(response.data.news);
+//                 console.log("Your data:", response.data.news);
+//                 setIsLoading(false);
+//             } catch (error) {
+//                 console.error("Error fetching data:", error);
+//                 setIsLoading(false);
+//             }
+//         };
+//         getData();
+//     }, [category, search]);
+
+
 
     // const handleFetchArticle = async (articleUrl) => {
     //     try {
