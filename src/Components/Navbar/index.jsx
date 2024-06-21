@@ -15,7 +15,7 @@ const Navbar = () => {
     const {search, setSearch} = useContext(CategoryContext);
     const [data, setData] = useState();
     const [searchToggle, setSearchToggle] = useState(false);
-    const [location, setLocation] = useState({ lat: null, lon: null });
+    const [location, setLocation] = useState({ latitude: null, longitude: null });
     const isMobile = useCheckMobileScreen();
 
 
@@ -25,7 +25,7 @@ const Navbar = () => {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         const { latitude, longitude } = position.coords;
-                        setLocation({ lat: latitude, lon: longitude });
+                        setLocation({ latitude: latitude, longitude: longitude });
                     },
                     (error) => {
                         console.error("Error getting location:", error);
@@ -39,31 +39,24 @@ const Navbar = () => {
     }, []);
 
 
-    useEffect(() => {
-        if (location.lat && location.lon) {
+      useEffect(() => {
+        if (location.latitude && location.longitude) {
             const getData = async () => {
                 try {
-                setIsLoading(true);
-                const api_key = 'your-api-key';
-                const url = `https://api.oikolab.com/weather?lat=${lat}&lon=${lon}&api-key=${api_key}`;
+                    const apiKey = 'c86500a1fc2f9fb96d800d7cd5a6d455';  // Replace with your actual WeatherAPI key
+                    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}`;
 
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setWeatherData(data);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setIsLoading(false);
-            }
-            }
+                    const response = await axios.get(url);
+                    setData(response.data);
+                } catch (error) {
+                    console.log(error);
+                } 
+            };
             getData();
         } else {
-            console.log("function not run");
+            console.log("Latitude and Longitude not provided");
         }
-    }, [])
+    }, [location]);
 
     const kelvinToCelsius = (kelvin) => {
         return (kelvin - 273.15).toFixed(0); // Converting to Celsius and fixing to 2 decimal places
