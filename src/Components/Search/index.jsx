@@ -15,7 +15,7 @@ const Search = () => {
         
         // Set the search state and clear the input
         setSearch(inputValue.trim());
-        // setCategory(''); // Assuming you also want to clear the category when searching
+        // setCategory('');
         
         // Optionally, you can clear the input field after submitting
         setInputValue('');

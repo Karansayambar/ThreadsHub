@@ -6,11 +6,12 @@ import ArticlePage from './Pages/ArticlePage';
 
 function App() {
     return (
-        <CategoryProvider>
+        // CategoryProvider is added at top of the code it accessible for all below components
+        <CategoryProvider> 
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/article" element={<ArticlePage />} />
+                    {/* <Route path="/article" element={<ArticlePage />} /> */}
                 </Routes>
             </BrowserRouter>
         </CategoryProvider>

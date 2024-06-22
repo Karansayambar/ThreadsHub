@@ -180,6 +180,7 @@ input:focus {
   .publish {
     font-size: 14px;
   }
+  
   .loader-container {
     box-sizing: border-box;
     width: 99%;
@@ -195,8 +196,9 @@ input:focus {
     align-items: center;
     justify-content: space-between;
     padding: 0.2rem 1rem;
-    margin-top: 0.8rem;
+    margin-top: 1.5rem;
   }
+
   .marquee {
     display: flex;
     align-items: center;

@@ -5,7 +5,7 @@
   justify-content: space-between;
 }
 input {
-  color: var(--black);
+  color: var(--white);
   width: 12rem;
 }
 
@@ -28,4 +28,10 @@ button:hover {
   background-color: none;
   border: 1px solid var(--vintage);
   color: var(--black);
+}
+
+@media screen and (max-width: 800px) {
+  input {
+    color: var(--black);
+  }
 }
