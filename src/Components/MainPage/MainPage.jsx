@@ -9,14 +9,14 @@ import MobileLoader from "../../Functions/useMobileLoader";
 import DesktopLoader from "../../Functions/useDesktopLoader";
 import Pagination from "../Pagination";
 import { IoSearchSharp } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineLike } from "react-icons/ai";
 import Search from "../Search";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
     const { category, page, search, like, setLike, likedArticles, toggleLike } = useContext(CategoryContext);   // Access data from useContext
     const [data, setData] = useState(null);
-    const [articles, setArticles] = useState(null);
+    var  [articles, setArticles] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const isMobile = useCheckMobileScreen();
     const [searchToggle, setSearchToggle] = useState(false);
@@ -90,14 +90,14 @@ const MainPage = () => {
                             articles.slice(page * 9 - 9, page * 9).map((article, index) => (
                                 <div className="article" key={index}>
                                     <div className="link">
-                                        <Link to={article.url} className="link">
+                                        <Link to= {`/article/${article.id}`} state={{article : {article}}} className="link">
                                             <h3 className="title">{article.title.slice(0, 80)}...</h3>
                                         </Link>
                                         <img className="img" src={article.image} alt={article.title} />
                                         <p className="description">{article.description ? article.description.slice(0, 100) + "..." : "No description available"}</p>
                                         <div className="like-container">
                                             <p className="publish">{TimeConverter(article.published.slice(0, 10))}</p>
-                                            <p className={likedArticles.some(item => item.url === article.url) ? "color-red" : ''} onClick={() => toggleLike(article)}>
+                                            <p className={likedArticles.some(item => item.id === article.id) ? "color-red" : ''} onClick={() => toggleLike(article)}>
                                                 <AiOutlineLike />
                                             </p>
                                         </div>
