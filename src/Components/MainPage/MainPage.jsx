@@ -110,9 +110,9 @@ const MainPage = () => {
                                     <div className="container">
                                         <img className="img" src={article.image} alt={article.title} />
                                         <div className="mini-container">
-                                            <Link to={article.url} className="link">
-                                                <h3 className="title">{article.title.slice(0, 60)}...</h3>
-                                            </Link>
+                                            <Link to= {`/article/${article.id}`} state={{article : {article}}} className="link">
+                                            <h3 className="title">{article.title.slice(0, 60)}...</h3>
+                                        </Link>
                                             <div className="like-container">
                                                 <p className="publish">{TimeConverter(article.published.slice(0, 10))}</p>
                                                 <p className={likedArticles.some(item => item.url === article.url) ? "color-red" : ''} onClick={() => toggleLike(article)}>

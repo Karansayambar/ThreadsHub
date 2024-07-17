@@ -53,8 +53,8 @@ li a:hover {
   .sidebar {
     position: fixed;
     top: 0;
-    right: -40%;
-    width: 30%;
+    right: -70%;
+    width: 60%;
     height: 100%;
     background-color: white;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
